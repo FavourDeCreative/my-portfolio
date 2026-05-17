@@ -43,7 +43,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center px-5 pt-[80px] sm:pt-[95px] md:pt-[120px] pb-12 relative overflow-hidden bg-[#071925]">
+    <section className="min-h-screen flex items-start md:items-center px-5 pt-[80px] sm:pt-[95px] md:pt-[120px] pb-12 relative overflow-hidden bg-[#071925]">
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,245,255,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,84,4,0.10),transparent_45%),radial-gradient(circle_at_center,rgba(139,92,246,0.10),transparent_55%)]" />
 
