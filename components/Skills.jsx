@@ -8,30 +8,12 @@ import {
 } from "lucide-react";
 
 const skills = [
-  {
-    icon: FileCode,
-    title: "HTML & CSS",
-  },
-  {
-    icon: Palette,
-    title: "Tailwind CSS",
-  },
-  {
-    icon: Monitor,
-    title: "React & Next.js",
-  },
-  {
-    icon: Layers,
-    title: "Vue & Nuxt",
-  },
-  {
-    icon: Rocket,
-    title: "GSAP Animations",
-  },
-  {
-    icon: Database,
-    title: "Bootstrap",
-  },
+  { icon: FileCode, title: "HTML & CSS", color: "#E34F26" },
+  { icon: Palette, title: "Tailwind CSS", color: "#38BDF8" },
+  { icon: Monitor, title: "React & Next.js", color: "#61DAFB" },
+  { icon: Layers, title: "Vue & Nuxt", color: "#42B883" },
+  { icon: Rocket, title: "GSAP Animations", color: "#88CE02" },
+  { icon: Database, title: "Bootstrap", color: "#7952B3" },
 ];
 
 export default function Skills() {
@@ -42,7 +24,6 @@ export default function Skills() {
           <p className="text-cyan-400 uppercase tracking-[0.3em] mb-4">
             My Stack
           </p>
-
           <h2 className="text-5xl font-bold">Technologies I Use</h2>
         </div>
 
@@ -53,11 +34,15 @@ export default function Skills() {
             return (
               <div
                 key={index}
-                className="border border-white/10 rounded-3xl p-10 hover:border-cyan-400 transition bg-white/5 backdrop-blur-xl"
+                className="border border-white/10 rounded-3xl p-10 bg-white/5 backdrop-blur-xl hover:border-white/30 transition"
               >
-                <Icon className="text-cyan-400 mb-6" size={40} />
+                <Icon
+                  size={40}
+                  style={{ color: skill.color }}
+                  className="mb-6"
+                />
 
-                <h3 className="text-2xl font-semibold mb-2">{skill.title}</h3>
+                <h3 className="text-2xl font-semibold">{skill.title}</h3>
               </div>
             );
           })}

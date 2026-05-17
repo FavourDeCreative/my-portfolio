@@ -3,13 +3,13 @@ import Image from "next/image";
 const sites = [
   {
     title: "Gbenga Gomes Portfolio",
-    image: "/site1.jpg",
+    image: "/sites/site1.jpg",
     link: "https://gbenga-gomes.vercel.app",
   },
   {
-    title: "E-commerce UI",
-    image: "/sites/site2.png",
-    link: "https://example.com",
+    title: "CDORF.ng",
+    image: "/sites/cdorf.png",
+    link: "https://cdorf.vercel.app",
   },
   {
     title: "Fintech Dashboard",
