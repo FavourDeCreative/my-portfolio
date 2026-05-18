@@ -48,25 +48,15 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-5 pt-[60px] pb-12 sm:pt-[80px] md:flex md:items-center md:pt-[120px]">
-
-      {/* BACKGROUND */}
-      <div className="hero absolute inset-0" />
-
-      {/* BLOBS */}
-      <div className="absolute -right-24 -top-24 h-[220px] w-[220px] rounded-full blur-[120px] sm:h-[280px] sm:w-[280px]" />
-      <div className="absolute -bottom-24 -left-24 h-[200px] w-[200px] rounded-full blur-[120px] sm:h-[240px] sm:w-[240px]" />
+    <section className="relative flex min-h-screen items-center overflow-hidden px-5 py-24">
 
       <div
         ref={heroRef}
-        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-16"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 md:grid-cols-2"
       >
 
         {/* ORBIT */}
-        <div className="relative order-1 flex min-h-[320px] items-start justify-center pt-2 sm:min-h-[420px] sm:items-center md:order-2 md:min-h-[500px]">
-
-          {/* GLOW */}
-          <div className="absolute h-[180px] w-[180px] rounded-full blur-3xl sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]" />
+        <div className="relative order-1 flex min-h-[360px] items-center justify-center md:order-2 md:min-h-[500px]">
 
           {/* CENTER IMAGE */}
           <div className="relative z-10 h-32 w-32 overflow-hidden rounded-full border sm:h-44 sm:w-44 md:h-56 md:w-56">
@@ -128,7 +118,7 @@ export default function Hero() {
         </div>
 
         {/* TEXT */}
-        <div className="order-2 flex flex-col items-center text-center md:order-1 md:items-start md:pt-12 md:text-left">
+        <div className="order-2 flex flex-col items-center text-center md:order-1 md:items-start md:text-left">
 
           <p className="mb-4 text-xs uppercase tracking-[0.3em] sm:text-sm md:mb-6 md:text-base">
             Frontend Developer
