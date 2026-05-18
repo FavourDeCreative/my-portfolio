@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const skills = [
-  { img: "/skills/html.png", glow: "rgba(255, 84, 4, 0.6)" },
-  { img: "/skills/tailwind.png", glow: "rgba(0, 245, 255, 0.6)" },
-  { img: "/skills/react.png", glow: "rgba(97, 218, 251, 0.6)" },
-  { img: "/skills/next.png", glow: "rgba(255, 255, 255, 0.25)" },
-  { img: "/skills/vue.png", glow: "rgba(34, 197, 94, 0.6)" },
-  { img: "/skills/gsap.png", glow: "rgba(236, 72, 153, 0.6)" },
+  { img: "/skills/html.png" },
+  { img: "/skills/tailwind.png" },
+  { img: "/skills/react.png" },
+  { img: "/skills/next.png" },
+  { img: "/skills/vue.png" },
+  { img: "/skills/gsap.png" },
 ];
 
 export default function Hero() {
-  const heroRef = useRef();
+  const heroRef = useRef(null);
   const [radius, setRadius] = useState(120);
 
   useEffect(() => {
     const updateRadius = () => {
       if (window.innerWidth < 640) {
-        setRadius(70); // tighter mobile orbit
+        setRadius(95);
       } else if (window.innerWidth < 1024) {
-        setRadius(130);
+        setRadius(135);
       } else {
-        setRadius(165);
+        setRadius(170);
       }
     };
 
@@ -37,44 +37,52 @@ export default function Hero() {
   useEffect(() => {
     gsap.fromTo(
       heroRef.current,
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.1,
+        ease: "power3.out",
+      }
     );
   }, []);
 
   return (
-    <section className="min-h-screen flex items-start md:items-center px-5 pt-[80px] sm:pt-[95px] md:pt-[120px] pb-12 relative overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden px-5 pt-[60px] pb-12 sm:pt-[80px] md:flex md:items-center md:pt-[120px]">
+
       {/* BACKGROUND */}
-      <div className="hero" />
+      <div className="hero absolute inset-0" />
 
       {/* BLOBS */}
-      <div className="absolute w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] bg-cyan-400/30 blur-[120px] top-[-100px] right-[-100px] rounded-full" />
-      <div className="absolute w-[180px] sm:w-[240px] h-[180px] sm:h-[240px] bg-orange-500/30 blur-[120px] bottom-[-100px] left-[-100px] rounded-full" />
+      <div className="absolute -right-24 -top-24 h-[220px] w-[220px] rounded-full blur-[120px] sm:h-[280px] sm:w-[280px]" />
+      <div className="absolute -bottom-24 -left-24 h-[200px] w-[200px] rounded-full blur-[120px] sm:h-[240px] sm:w-[240px]" />
 
       <div
         ref={heroRef}
-        className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center relative z-10"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-16"
       >
+
         {/* ORBIT */}
-        <div className="relative flex items-center justify-center order-1 md:order-2">
+        <div className="relative order-1 flex min-h-[320px] items-start justify-center pt-2 sm:min-h-[420px] sm:items-center md:order-2 md:min-h-[500px]">
+
           {/* GLOW */}
-          <div className="absolute w-[180px] sm:w-[220px] md:w-[260px] h-[180px] sm:h-[220px] md:h-[260px] rounded-full blur-3xl bg-gradient-to-br from-cyan-400/20 via-orange-500/10 to-purple-500/20" />
+          <div className="absolute h-[180px] w-[180px] rounded-full blur-3xl sm:h-[220px] sm:w-[220px] md:h-[260px] md:w-[260px]" />
 
           {/* CENTER IMAGE */}
-          <div className="relative w-28 h-28 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/20 z-10">
+          <div className="relative z-10 h-32 w-32 overflow-hidden rounded-full border sm:h-44 sm:w-44 md:h-56 md:w-56">
             <img
               src="/me.jpg"
               alt="profile"
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
 
           {/* ORBIT RING */}
           <div
-            className="absolute rounded-full border border-white/10"
+            className="absolute rounded-full border"
             style={{
-              width: radius * 2 + 50,
-              height: radius * 2 + 50,
+              width: radius * 2 + 60,
+              height: radius * 2 + 60,
             }}
           />
 
@@ -89,6 +97,7 @@ export default function Hero() {
             >
               {skills.map((skill, i) => {
                 const angle = (i / skills.length) * 2 * Math.PI;
+
                 const x = radius * Math.cos(angle);
                 const y = radius * Math.sin(angle);
 
@@ -101,17 +110,14 @@ export default function Hero() {
                     }}
                   >
                     <div className="animate-counter-spin">
-                      <div
-                        className="w-7 h-7 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center transition hover:scale-110"
-                        style={{
-                          boxShadow: `0 0 18px ${skill.glow}`,
-                        }}
-                      >
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur-xl transition hover:scale-110 sm:h-11 sm:w-11 md:h-14 md:w-14">
+
                         <img
                           src={skill.img}
                           alt="skill"
-                          className="w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 object-contain"
+                          className="h-4 w-4 object-contain sm:h-5 sm:w-5 md:h-8 md:w-8"
                         />
+
                       </div>
                     </div>
                   </div>
@@ -122,39 +128,43 @@ export default function Hero() {
         </div>
 
         {/* TEXT */}
-        <div className="order-2 md:order-1 text-center md:text-left md:mt-20 lg:mt-24 md:-translate-y-6">
-          <p className="uppercase tracking-[0.3em] text-cyan-300 mb-3 md:mb-6 text-xs sm:text-sm md:text-base">
+        <div className="order-2 flex flex-col items-center text-center md:order-1 md:items-start md:pt-12 md:text-left">
+
+          <p className="mb-4 text-xs uppercase tracking-[0.3em] sm:text-sm md:mb-6 md:text-base">
             Frontend Developer
           </p>
 
-          <h1 className="text-2xl sm:text-5xl md:text-7xl font-black leading-tight">
+          <h1 className="max-w-[14ch] text-3xl font-black leading-[1.05] sm:text-5xl md:text-7xl">
             Building{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+            <span>
               futuristic
             </span>{" "}
             digital experiences.
           </h1>
 
-          <p className="mt-5 md:mt-8 text-zinc-300 text-xs sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 md:pr-4">
+          <p className="mt-5 max-w-xl text-sm leading-relaxed sm:text-base md:mt-8 md:text-lg">
             I'm FavourDeCreative, a creative web developer focused on building
             immersive, responsive, and high-performance websites using modern
             web technologies.
           </p>
 
-          <div className="mt-8 md:mt-12 flex gap-3 md:gap-5 flex-wrap justify-center md:justify-start">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:mt-10 md:mt-12 md:justify-start md:gap-5">
+
             <a
               href="#projects"
-              className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 text-black px-5 py-3 sm:px-8 sm:py-4 rounded-full font-semibold flex items-center gap-2 hover:scale-105 transition"
+              className="flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition hover:scale-105 sm:px-8 sm:py-4 sm:text-base"
             >
-              View Projects <ArrowUpRight size={16} />
+              View Projects
+              <ArrowUpRight size={16} />
             </a>
 
             <a
               href="#contact"
-              className="border border-white/20 px-5 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-white hover:text-black transition"
+              className="rounded-full border px-5 py-3 text-sm transition sm:px-8 sm:py-4 sm:text-base"
             >
               Hire Me
             </a>
+
           </div>
         </div>
       </div>
@@ -170,13 +180,23 @@ export default function Hero() {
         }
 
         @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         @keyframes counter {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(-360deg);
+          }
         }
       `}</style>
     </section>
