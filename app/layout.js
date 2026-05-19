@@ -3,6 +3,10 @@ import "./globals.css";
 export const metadata = {
   metadataBase: new URL("https://favourdecreative.com.ng"),
 
+  verification: {
+    google: "JNmK08nn0KySu0LZk6DifIALT0n6xMU8vre-eHwXc0U",
+  },
+
   title: {
     default:
       "FavourDeCreative | Frontend Developer & Graphic Designer in Nigeria",
@@ -34,7 +38,9 @@ export const metadata = {
   category: "Technology",
 
   openGraph: {
-    title: "FavourDeCreative | Frontend Developer & Graphic Designer",
+    title:
+      "FavourDeCreative | Frontend Developer & Graphic Designer",
+
     description:
       "Modern web development, branding, graphic design, and futuristic digital experiences.",
 
@@ -59,7 +65,8 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "FavourDeCreative | Frontend Developer & Graphic Designer",
+    title:
+      "FavourDeCreative | Frontend Developer & Graphic Designer",
 
     description:
       "Modern web development, branding, and futuristic digital experiences.",
@@ -80,7 +87,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-black text-white overflow-x-hidden">{children}</body>
+      <body className="bg-black text-white overflow-x-hidden">
+        {children}
+      </body>
     </html>
   );
 }
