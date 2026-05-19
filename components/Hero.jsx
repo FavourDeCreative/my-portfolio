@@ -5,16 +5,16 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const skills = [
-  { img: "/skills/html.png", glow: "rgba(255, 84, 4, 0.6)" },
-  { img: "/skills/tailwind.png", glow: "rgba(0, 245, 255, 0.6)" },
-  { img: "/skills/react.png", glow: "rgba(97, 218, 251, 0.6)" },
-  { img: "/skills/next.png", glow: "rgba(255, 255, 255, 0.25)" },
-  { img: "/skills/vue.png", glow: "rgba(34, 197, 94, 0.6)" },
-  { img: "/skills/gsap.png", glow: "rgba(236, 72, 153, 0.6)" },
+  { img: "/skills/html.png" },
+  { img: "/skills/tailwind.png" },
+  { img: "/skills/react.png" },
+  { img: "/skills/next.png" },
+  { img: "/skills/vue.png" },
+  { img: "/skills/gsap.png" },
 ];
 
 export default function Hero() {
-  const heroRef = useRef();
+  const heroRef = useRef(null);
   const [radius, setRadius] = useState(120);
 
   useEffect(() => {
@@ -22,9 +22,9 @@ export default function Hero() {
       if (window.innerWidth < 640) {
         setRadius(70);
       } else if (window.innerWidth < 1024) {
-        setRadius(130);
+        setRadius(135);
       } else {
-        setRadius(165);
+        setRadius(170);
       }
     };
 
@@ -118,10 +118,10 @@ export default function Hero() {
 
           {/* ORBIT RING */}
           <div
-            className="absolute rounded-full border border-white/10"
+            className="absolute rounded-full border"
             style={{
-              width: radius * 2 + 50,
-              height: radius * 2 + 50,
+              width: radius * 2 + 60,
+              height: radius * 2 + 60,
             }}
           />
 
@@ -136,6 +136,7 @@ export default function Hero() {
             >
               {skills.map((skill, i) => {
                 const angle = (i / skills.length) * 2 * Math.PI;
+
 
                 const x = radius * Math.cos(angle);
 
@@ -161,6 +162,7 @@ export default function Hero() {
                           alt="Frontend development skill"
                           className="h-4 w-4 object-contain sm:h-6 sm:w-6 md:h-8 md:w-8"
                         />
+
                       </div>
                     </div>
                   </div>
@@ -189,9 +191,23 @@ export default function Hero() {
           to {
             transform: rotate(360deg);
           }
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         @keyframes counter {
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(-360deg);
+          }
           from {
             transform: rotate(0deg);
           }
