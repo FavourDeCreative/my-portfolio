@@ -20,7 +20,7 @@ export default function Hero() {
   useEffect(() => {
     const updateRadius = () => {
       if (window.innerWidth < 640) {
-        setRadius(70); // tighter mobile orbit
+        setRadius(70);
       } else if (window.innerWidth < 1024) {
         setRadius(130);
       } else {
@@ -29,6 +29,7 @@ export default function Hero() {
     };
 
     updateRadius();
+
     window.addEventListener("resize", updateRadius);
 
     return () => window.removeEventListener("resize", updateRadius);
@@ -38,34 +39,80 @@ export default function Hero() {
     gsap.fromTo(
       heroRef.current,
       { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      },
     );
   }, []);
 
   return (
-    <section className="min-h-screen flex items-start md:items-center px-5 pt-[80px] sm:pt-[95px] md:pt-[120px] pb-12 relative overflow-hidden bg-[#071925]">
+    <section className="relative min-h-screen overflow-hidden bg-[#071925] px-5 py-24 flex items-center">
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,245,255,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,84,4,0.10),transparent_45%),radial-gradient(circle_at_center,rgba(139,92,246,0.10),transparent_55%)]" />
 
       {/* BLOBS */}
-      <div className="absolute w-[200px] sm:w-[260px] h-[200px] sm:h-[260px] bg-cyan-400/30 blur-[120px] top-[-100px] right-[-100px] rounded-full" />
-      <div className="absolute w-[180px] sm:w-[240px] h-[180px] sm:h-[240px] bg-orange-500/30 blur-[120px] bottom-[-100px] left-[-100px] rounded-full" />
+      <div className="absolute top-[-100px] right-[-100px] h-[220px] w-[220px] rounded-full bg-cyan-400/30 blur-[120px]" />
 
+      <div className="absolute bottom-[-100px] left-[-100px] h-[220px] w-[220px] rounded-full bg-orange-500/30 blur-[120px]" />
+
+      {/* CONTENT */}
       <div
         ref={heroRef}
-        className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center relative z-10"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 md:grid-cols-2"
       >
+        {/* TEXT */}
+        <div className="order-2 text-center md:order-1 md:text-left">
+          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-cyan-300 sm:text-sm md:text-base">
+            Frontend Developer & Graphic Designer
+          </p>
+
+          <h1 className="text-4xl font-black leading-tight sm:text-6xl md:text-7xl">
+            Building{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+              futuristic
+            </span>{" "}
+            websites & creative digital experiences.
+          </h1>
+
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base md:mx-0 md:text-lg">
+            I'm FavourDeCreative, a frontend developer and graphic designer in
+            Nigeria focused on creating immersive, responsive, and
+            high-performance websites, branding, logos, and modern digital
+            experiences for businesses and creators.
+          </p>
+
+          <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
+            <a
+              href="#projects"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 px-6 py-3 font-semibold text-black transition hover:scale-105 sm:px-8 sm:py-4"
+            >
+              View Projects
+              <ArrowUpRight size={18} />
+            </a>
+
+            <a
+              href="#contact"
+              className="rounded-full border border-white/20 px-6 py-3 transition hover:bg-white hover:text-black sm:px-8 sm:py-4"
+            >
+              Hire Me
+            </a>
+          </div>
+        </div>
+
         {/* ORBIT */}
-        <div className="relative flex items-center justify-center order-1 md:order-2">
+        <div className="relative order-1 flex items-center justify-center md:order-2">
           {/* GLOW */}
-          <div className="absolute w-[180px] sm:w-[220px] md:w-[260px] h-[180px] sm:h-[220px] md:h-[260px] rounded-full blur-3xl bg-gradient-to-br from-cyan-400/20 via-orange-500/10 to-purple-500/20" />
+          <div className="absolute h-[220px] w-[220px] rounded-full bg-gradient-to-br from-cyan-400/20 via-orange-500/10 to-purple-500/20 blur-3xl sm:h-[260px] sm:w-[260px] md:h-[320px] md:w-[320px]" />
 
           {/* CENTER IMAGE */}
-          <div className="relative w-28 h-28 sm:w-44 sm:h-44 md:w-56 md:h-56 rounded-full overflow-hidden border border-white/20 z-10">
+          <div className="relative z-10 h-32 w-32 overflow-hidden rounded-full border border-white/20 sm:h-44 sm:w-44 md:h-56 md:w-56">
             <img
               src="/me.jpg"
-              alt="profile"
-              className="w-full h-full object-cover"
+              alt="FavourDeCreative Frontend Developer and Graphic Designer"
+              className="h-full w-full object-cover"
             />
           </div>
 
@@ -89,7 +136,9 @@ export default function Hero() {
             >
               {skills.map((skill, i) => {
                 const angle = (i / skills.length) * 2 * Math.PI;
+
                 const x = radius * Math.cos(angle);
+
                 const y = radius * Math.sin(angle);
 
                 return (
@@ -102,15 +151,15 @@ export default function Hero() {
                   >
                     <div className="animate-counter-spin">
                       <div
-                        className="w-7 h-7 sm:w-10 sm:h-10 md:w-14 md:h-14 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl flex items-center justify-center transition hover:scale-110"
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-xl transition hover:scale-110 sm:h-12 sm:w-12 md:h-14 md:w-14"
                         style={{
                           boxShadow: `0 0 18px ${skill.glow}`,
                         }}
                       >
                         <img
                           src={skill.img}
-                          alt="skill"
-                          className="w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 object-contain"
+                          alt="Frontend development skill"
+                          className="h-4 w-4 object-contain sm:h-6 sm:w-6 md:h-8 md:w-8"
                         />
                       </div>
                     </div>
@@ -120,46 +169,9 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        {/* TEXT */}
-        <div className="order-2 md:order-1 text-center md:text-left md:mt-20 lg:mt-24 md:-translate-y-6">
-          <p className="uppercase tracking-[0.3em] text-cyan-300 mb-3 md:mb-6 text-xs sm:text-sm md:text-base">
-            Frontend Developer
-          </p>
-
-          <h1 className="text-2xl sm:text-5xl md:text-7xl font-black leading-tight">
-            Building{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-              futuristic
-            </span>{" "}
-            digital experiences.
-          </h1>
-
-          <p className="mt-5 md:mt-8 text-zinc-300 text-xs sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0 md:pr-4">
-            I'm FavourDeCreative, a creative web developer focused on building
-            immersive, responsive, and high-performance websites using modern
-            web technologies.
-          </p>
-
-          <div className="mt-8 md:mt-12 flex gap-3 md:gap-5 flex-wrap justify-center md:justify-start">
-            <a
-              href="#projects"
-              className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 text-black px-5 py-3 sm:px-8 sm:py-4 rounded-full font-semibold flex items-center gap-2 hover:scale-105 transition"
-            >
-              View Projects <ArrowUpRight size={16} />
-            </a>
-
-            <a
-              href="#contact"
-              className="border border-white/20 px-5 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-white hover:text-black transition"
-            >
-              Hire Me
-            </a>
-          </div>
-        </div>
       </div>
 
-      {/* ANIMATION */}
+      {/* ANIMATIONS */}
       <style>{`
         .animate-spin-slow {
           animation: spin 18s linear infinite;
@@ -170,13 +182,23 @@ export default function Hero() {
         }
 
         @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(360deg);
+          }
         }
 
         @keyframes counter {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+
+          to {
+            transform: rotate(-360deg);
+          }
         }
       `}</style>
     </section>
