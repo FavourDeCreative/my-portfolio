@@ -1,222 +1,132 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Link from "next/link"
+import {
+  Smile,
+  Users,
+  Rocket,
+  BadgeCheck,
+  Play,
+  ArrowUpRight,
+} from "lucide-react";
 
-const skills = [
-  { img: "/skills/html.png" },
-  { img: "/skills/tailwind.png" },
-  { img: "/skills/react.png" },
-  { img: "/skills/next.png" },
-  { img: "/skills/vue.png" },
-  { img: "/skills/gsap.png" },
+// ─── Stats Data ──────────────────────────────────────────────────────────────
+const STATS = [
+  { value: "50+", label: "Projects Completed", icon: Smile },
+  { value: "30+", label: "Happy Clients", icon: Users },
+  { value: "3+", label: "Years Experience", icon: Rocket },
+  { value: "100%", label: "Client Satisfaction", icon: BadgeCheck },
 ];
 
 export default function Hero() {
-  const heroRef = useRef(null);
-  const [radius, setRadius] = useState(120);
+  const sectionRef = useRef(null);
+  const badgeRef = useRef(null);
+  const headingRef = useRef(null);
+  const subRef = useRef(null);
+  const btnsRef = useRef(null);
+  const statsRef = useRef(null);
 
   useEffect(() => {
-    const updateRadius = () => {
-      if (window.innerWidth < 640) {
-        setRadius(70);
-      } else if (window.innerWidth < 1024) {
-        setRadius(135);
-      } else {
-        setRadius(170);
-      }
-    };
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    updateRadius();
+      tl.fromTo(
+        badgeRef.current,
+        { opacity: 0, x: -30 },
+        { opacity: 1, x: 0, duration: 0.7 },
+      )
+        .fromTo(
+          headingRef.current,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.9 },
+          "-=0.4",
+        )
+        .fromTo(
+          subRef.current,
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.5",
+        )
+        .fromTo(
+          btnsRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          "-=0.4",
+        )
+        .fromTo(
+          statsRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          "-=0.4",
+        );
+    }, sectionRef);
 
-    window.addEventListener("resize", updateRadius);
-
-    return () => window.removeEventListener("resize", updateRadius);
-  }, []);
-
-  useEffect(() => {
-    gsap.fromTo(
-      heroRef.current,
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power3.out",
-      },
-    );
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#071925] px-5 py-24 flex items-center">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-8 overflow-hidden font-sans select-none"
+      id="hero"
+    >
       {/* BACKGROUND */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,245,255,0.12),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(255,84,4,0.10),transparent_45%),radial-gradient(circle_at_center,rgba(139,92,246,0.10),transparent_55%)]" />
+      <div className="absolute top-[-20%] right-[-10%] w-[75%] h-[120%] pointer-events-none z-0" />
 
-      {/* BLOBS */}
-      <div className="absolute top-[-100px] right-[-100px] h-[220px] w-[220px] rounded-full bg-cyan-400/30 blur-[120px]" />
+      {/* HERO CONTENT */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="lg:col-span-12 flex flex-col justify-center">
+          {/* Badge */}
+          <div
+            ref={badgeRef}
+            className="opacity-0 flex items-center gap-3 mb-4"
+          >
+            <span className="w-8 h-[2px]" />
+            <span className="text-[10px] font-bold tracking-[0.25em] uppercase t1">
+              Welcome to FavourDeCreative
+            </span>
+          </div>
 
-      <div className="absolute bottom-[-100px] left-[-100px] h-[220px] w-[220px] rounded-full bg-orange-500/30 blur-[120px]" />
-
-      {/* CONTENT */}
-      <div
-        ref={heroRef}
-        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 md:grid-cols-2"
-      >
-        {/* TEXT */}
-        <div className="order-2 text-center md:order-1 md:text-left">
-          <p className="mb-4 text-xs uppercase tracking-[0.35em] text-cyan-300 sm:text-sm md:text-base">
-            Frontend Developer & Graphic Designer
-          </p>
-
-          <h1 className="text-4xl font-black leading-tight sm:text-6xl md:text-7xl">
-            Building{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 bg-clip-text text-transparent">
-              futuristic
-            </span>{" "}
-            websites & creative digital experiences.
+          {/* Heading (smaller) */}
+          <h1
+            ref={headingRef}
+            className="opacity-0 font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.1] t2"
+          >
+            We Build Modern
+            <span className="t3"> Web</span> Experiences
+            That Drive <span className="t3">Results.</span>
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base md:mx-0 md:text-lg">
-            I'm FavourDeCreative, a frontend developer and graphic designer in
-            Nigeria focused on creating immersive, responsive, and
-            high-performance websites, branding, logos, and modern digital
-            experiences for businesses and creators.
+          {/* Subtitle (reduced spacing) */}
+          <p
+            ref={subRef}
+            className="opacity-0 mt-4 text-sm sm:text-base max-w-xl leading-relaxed"
+          >
+            We help brands and businesses grow online with high-performing
+            websites and digital solutions that deliver real impact.
           </p>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4 md:justify-start">
-            <a
-              href="#projects"
-              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-orange-500 px-6 py-3 font-semibold text-black transition hover:scale-105 sm:px-8 sm:py-4"
-            >
-              View Projects
-              <ArrowUpRight size={18} />
-            </a>
-
-            <a
-              href="#contact"
-              className="rounded-full border border-white/20 px-6 py-3 transition hover:bg-white hover:text-black sm:px-8 sm:py-4"
-            >
-              Hire Me
-            </a>
-          </div>
-        </div>
-
-        {/* ORBIT */}
-        <div className="relative order-1 flex items-center justify-center md:order-2">
-          {/* GLOW */}
-          <div className="absolute h-[220px] w-[220px] rounded-full bg-gradient-to-br from-cyan-400/20 via-orange-500/10 to-purple-500/20 blur-3xl sm:h-[260px] sm:w-[260px] md:h-[320px] md:w-[320px]" />
-
-          {/* CENTER IMAGE */}
-          <div className="relative z-10 h-32 w-32 overflow-hidden rounded-full border border-white/20 sm:h-44 sm:w-44 md:h-56 md:w-56">
-            <img
-              src="/me.jpg"
-              alt="FavourDeCreative Frontend Developer and Graphic Designer"
-              className="h-full w-full object-cover"
-            />
-          </div>
-
-          {/* ORBIT RING */}
+          {/* BUTTONS (smaller padding) */}
+          {/* BUTTONS (smaller padding) */}
           <div
-            className="absolute rounded-full border"
-            style={{
-              width: radius * 2 + 60,
-              height: radius * 2 + 60,
-            }}
-          />
-
-          {/* ORBIT ITEMS */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div
-              className="relative animate-spin-slow"
-              style={{
-                width: radius * 2,
-                height: radius * 2,
-              }}
+            ref={btnsRef}
+            className="opacity-0 flex flex-wrap items-center justify-center gap-4 mt-6"
+          >
+            <Link
+              href="#projects"
+              className="group flex items-center gap-2 text-xs font-semibold px-6 py-3 rounded-full transition-all duration-300 btn1"
             >
-              {skills.map((skill, i) => {
-                const angle = (i / skills.length) * 2 * Math.PI;
+              View Our Work
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </Link>
 
-
-                const x = radius * Math.cos(angle);
-
-                const y = radius * Math.sin(angle);
-
-                return (
-                  <div
-                    key={i}
-                    className="absolute left-1/2 top-1/2"
-                    style={{
-                      transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-                    }}
-                  >
-                    <div className="animate-counter-spin">
-                      <div
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-xl transition hover:scale-110 sm:h-12 sm:w-12 md:h-14 md:w-14"
-                        style={{
-                          boxShadow: `0 0 18px ${skill.glow}`,
-                        }}
-                      >
-                        <img
-                          src={skill.img}
-                          alt="Frontend development skill"
-                          className="h-4 w-4 object-contain sm:h-6 sm:w-6 md:h-8 md:w-8"
-                        />
-
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Play Showreel removed (unchanged as you commented it out) */}
           </div>
         </div>
       </div>
 
-      {/* ANIMATIONS */}
-      <style>{`
-        .animate-spin-slow {
-          animation: spin 18s linear infinite;
-        }
-
-        .animate-counter-spin {
-          animation: counter 18s linear infinite;
-        }
-
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @keyframes counter {
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(-360deg);
-          }
-          from {
-            transform: rotate(0deg);
-          }
-
-          to {
-            transform: rotate(-360deg);
-          }
-        }
-      `}</style>
     </section>
   );
 }
