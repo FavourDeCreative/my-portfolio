@@ -54,7 +54,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/og-image.png",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "FavourDeCreative Portfolio",
