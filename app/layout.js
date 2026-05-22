@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://favourdecreative.com.ng"),
@@ -38,20 +39,13 @@ export const metadata = {
   category: "Technology",
 
   openGraph: {
-    title:
-      "FavourDeCreative | Frontend Developer & Graphic Designer",
-
+    title: "FavourDeCreative | Frontend Developer & Graphic Designer",
     description:
       "Modern web development, branding, graphic design, and futuristic digital experiences.",
-
     url: "https://favourdecreative.com.ng",
-
     siteName: "FavourDeCreative",
-
     locale: "en_US",
-
     type: "website",
-
     images: [
       {
         url: "/logo.png",
@@ -64,13 +58,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-
-    title:
-      "FavourDeCreative | Frontend Developer & Graphic Designer",
-
+    title: "FavourDeCreative | Frontend Developer & Graphic Designer",
     description:
       "Modern web development, branding, and futuristic digital experiences.",
-
     images: ["/og-image.png"],
   },
 
@@ -89,6 +79,22 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-black text-white overflow-x-hidden">
         {children}
+
+        {/* Tawk.to Chat Script */}
+        <Script id="tawk-to" strategy="afterInteractive">
+          {`
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+              var s1=document.createElement("script"),
+                  s0=document.getElementsByTagName("script")[0];
+              s1.async=true;
+              s1.src='https://embed.tawk.to/6a0b5d3aad1ab21c3312da74/default';
+              s1.charset='UTF-8';
+              s1.setAttribute('crossorigin','*');
+              s0.parentNode.insertBefore(s1,s0);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   );
