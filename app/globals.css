@@ -4,10 +4,14 @@
 
 
 :root {
- --pc: #22D3EE;
+ --pc: #0266F4;
  --sc: #F3F4F4;
- --acc: #0B94D4;
+ --acc: #0082F4;
 
+}
+
+.logo-text{
+  color: var(--pc);
 }
 
 /* HERO BACKGROUND */
@@ -35,6 +39,9 @@
   font-size: 1.7rem;
 }
 
+.txt{
+  color: var(--pc);
+}
 .btn1{
   color: var(--acc);
   border: 1px solid var(--acc);
@@ -43,4 +50,10 @@
   color: var(--sc);
   background: var(--acc);
   transform: scale(1.1);
+}
+
+.abt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

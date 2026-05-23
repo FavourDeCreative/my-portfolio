@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@/public/logo.png"; // Adjust the path (e.g., "../../public/logo.png") depending on your folder depth
+import logoImg from "@/public/logo1.png"; // Adjust the path (e.g., "../../public/logo.png") depending on your folder depth
 
 const links = [
   { name: "Home", href: "#home" },
@@ -37,7 +37,7 @@ export default function Navbar() {
             />
           </div>
           <span>
-            Favour<span className="text-cyan-400">DeCreative</span>
+            Favour<span className="logo-text">DeCreative</span>
           </span>
         </Link>
 

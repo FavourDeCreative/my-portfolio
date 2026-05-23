@@ -1,46 +1,66 @@
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-32 px-6 overflow-hidden"
+      className="relative py-28 md:py-36 px-6 overflow-hidden abt"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
-        {/* LEFT TEXT */}
-        <div>
-          <p className="uppercase tracking-[0.3em] text-sm mb-4 text-cyan-400">
-            About Me
-          </p>
+      {/* background glow */}
+      <div className=" rounded-full pointer-events-none justify-center " />
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-            I create modern interfaces with smooth user experiences.
-          </h2>
+      {/* <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10"> */}
+      {/* LEFT CONTENT */}
+      <div>
+        <p className="uppercase  txt text-sm mb-5 text-center">
+          About FavourDeCreative
+        </p>
 
-          <p className="text-zinc-400 text-base md:text-lg leading-relaxed mt-6 max-w-xl">
-            I specialize in frontend development using React, Next.js, Vue.js,
-            and Nuxt.js. My focus is building fast, responsive, SEO-optimized
-            websites that feel smooth and look modern across all devices.
-          </p>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-center text-white">
+          We build modern websites that help brands grow online.
+        </h2>
+
+        <p className="mt-7 text-zinc-400 text-lg leading-relaxed max-w-xl text-center">
+          FavourDeCreative is a modern web agency focused on creating fast,
+          responsive, and visually engaging websites for businesses, brands, and
+          startups. We combine clean design, smooth animations, and scalable
+          frontend technologies to deliver digital experiences that stand out.
+        </p>
+
+        <p className="mt-5 text-zinc-500 leading-relaxed max-w-xl text-center">
+          From business websites to custom frontend solutions, our goal is to
+          help brands establish a strong online presence with performance,
+          creativity, and user experience at the center of every project.
+        </p>
+
+        {/* STATS */}
+        <div className="grid grid-cols-3 gap-5 mt-10">
+          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold txt">50+</h3>
+            <p className="text-sm text-zinc-400 mt-2">Projects Built</p>
+          </div>
+
+          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold txt">100%</h3>
+            <p className="text-sm text-zinc-400 mt-2">Responsive Design</p>
+          </div>
+
+          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold txt">24/7</h3>
+            <p className="text-sm text-zinc-400 mt-2">Support & Updates</p>
+          </div>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="relative flex justify-center md:justify-end">
-          {/* glow background */}
-          <div className="absolute w-[300px] md:w-[420px] h-[300px] md:h-[420px] bg-cyan-400/20 blur-[120px] rounded-full" />
-
-          {/* image card */}
-          <div className="relative w-[260px] sm:w-[300px] md:w-[360px] aspect-[3/4] rounded-2xl overflow-hidden border border-white/10 shadow-xl group">
-            <Image
-              src="/me.jpg"
-              alt="FavourDeCreative"
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition duration-700 scale-105 group-hover:scale-100"
-            />
-
-            {/* overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-          </div>
+        {/* BUTTON */}
+        <div className="mt-10">
+          <a
+            href="#portfolio"
+            className="inline-flex items-center gap-3 px-7 py-4 rounded-full btn1 font-semibold hover:scale-105 transition duration-300"
+          >
+            View Our Work
+            <ArrowUpRight size={20} />
+          </a>
         </div>
       </div>
     </section>
