@@ -57,3 +57,21 @@
   justify-content: center;
   align-items: center;
 }
+
+.service-card{
+  border-color: var(--acc);
+}
+.card{
+  border-color: var(--acc);
+}
+
+.soc{
+  color: var(--sc);
+  border-color: var(--acc);
+  transition: 0.3s ease-in-out;
+}
+.soc:hover{
+  color: var(--acc);
+  border-color: var(--pc);
+  background: var(--sc);
+}
