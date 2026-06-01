@@ -24,7 +24,7 @@ export default function WebsiteEmbed() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <p className="text-cyan-400 uppercase tracking-[0.3em] mb-4">
+          <p className="txt uppercase tracking-[0.3em] mb-4">
             Live Preview
           </p>
 
