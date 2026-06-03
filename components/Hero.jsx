@@ -99,7 +99,7 @@ export default function Hero() {
             <div className="mt-8 flex items-center gap-4">
               <Link
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border btn1"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border btn2"
               >
                 View Our Work
                 <ArrowUpRight
@@ -162,7 +162,7 @@ export default function Hero() {
                     border
                     rounded-2xl
                     p-4
-                    text-center
+                    text-center icon
                   "
                 >
                   <Icon size={20} className="mx-auto mb-3" />

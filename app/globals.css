@@ -7,9 +7,12 @@
  --pc: #0266F4;
  --sc: #F3F4F4;
  --acc: #0082F4;
+ --sc2:#cdc70d;
 
 }
-
+.fst{
+  color: var(--sc2);
+}
 .logo-text{
   color: var(--pc);
 }
@@ -45,13 +48,16 @@ font-size: 3rem;
   font-size: 1.7rem;
 }
 #hero .icon{
-  color: var(--sc);
+  color: var(--sc2);
   border: 1px solid var(--pc);
 }
 
 
 .txt{
   color: var(--pc);
+}
+.tt{
+  color: var(--sc2);
 }
 .btn1{
   color: var(--sc);
@@ -64,6 +70,18 @@ font-size: 3rem;
   transition: 0.3s ease-in-out;
 
 }
+.btn2{
+  color: var(--sc2);
+  background: var(--pc);
+}
+
+.btn2:hover{
+  background: var(--acc);
+  transform: scale(1.01);
+  transition: 0.3s ease-in-out;
+}
+
+
 
 .abt{
   display: flex;

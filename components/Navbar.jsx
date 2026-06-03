@@ -36,13 +36,13 @@ export default function Navbar() {
               priority
             />
           </div>
-          <span>
+          <span className="fst">
             Favour<span className="logo-text">DeCreative</span>
           </span>
         </Link>
 
         {/* 2. NAVLINKS (MIDDLE) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium tt">
           {links.map((link) => (
             <a
               key={link.name}
@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center">
           <Link
             href="#contact"
-            className="flex items-center gap-2 border border-white/40 hover:border-cyan-400 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-white/5 group"
+            className="flex items-center gap-2 border btn2 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-all duration-300  group"
           >
             Let's Talk
             <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -84,7 +84,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-lg font-medium text-white/80 hover:text-white transition-colors"
+              className="text-lg font-medium tt hover:text-white transition-colors"
             >
               {link.name}
             </a>
@@ -92,7 +92,7 @@ export default function Navbar() {
           <Link
             href="#contact"
             onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-2 border border-white/30 rounded-full py-3 mt-4 text-white text-base font-medium"
+            className="flex items-center justify-center gap-2 border rounded-full py-3 mt-4 text-base font-medium btn2"
           >
             Let's Talk
             <ArrowUpRight className="w-4 h-4" />

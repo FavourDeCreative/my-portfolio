@@ -21,14 +21,14 @@ export default function About() {
           We build modern websites that help brands grow online.
         </h2>
 
-        <p className="mt-7 text-zinc-400 text-lg leading-relaxed max-w-xl text-center">
+        <p className="mt-7 text-lg leading-relaxed max-w-l text-center">
           FavourDeCreative is a modern web agency focused on creating fast,
           responsive, and visually engaging websites for businesses, brands, and
           startups. We combine clean design, smooth animations, and scalable
           frontend technologies to deliver digital experiences that stand out.
         </p>
 
-        <p className="mt-5 text-zinc-500 leading-relaxed max-w-xl text-center">
+        <p className="mt-5  leading-relaxed max-w-l text-center">
           From business websites to custom frontend solutions, our goal is to
           help brands establish a strong online presence with performance,
           creativity, and user experience at the center of every project.
@@ -36,19 +36,19 @@ export default function About() {
 
         {/* STATS */}
         <div className="grid grid-cols-3 gap-5 mt-10">
-          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
-            <h3 className="text-3xl font-bold txt">50+</h3>
-            <p className="text-sm text-zinc-400 mt-2">Projects Built</p>
+          <div className="border card backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold tt">50+</h3>
+            <p className="text-sm tx mt-2">Projects Built</p>
           </div>
 
-          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
-            <h3 className="text-3xl font-bold txt">100%</h3>
-            <p className="text-sm text-zinc-400 mt-2">Responsive Design</p>
+          <div className="border card backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold tt">100%</h3>
+            <p className="text-sm mt-2">Responsive Design</p>
           </div>
 
-          <div className="border border-white/10 bg-white/5 backdrop-blur-md rounded-2xl p-5">
-            <h3 className="text-3xl font-bold txt">24/7</h3>
-            <p className="text-sm text-zinc-400 mt-2">Support & Updates</p>
+          <div className="border card backdrop-blur-md rounded-2xl p-5">
+            <h3 className="text-3xl font-bold tt">24/7</h3>
+            <p className="text-sm mt-2">Support & Updates</p>
           </div>
         </div>
 
