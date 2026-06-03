@@ -22,7 +22,13 @@
 }
 
 /*hero designs*/
-
+#hero h1{
+  font-size: 1.7rem;
+}
+#hero h1 .one{
+color: var(--pc);
+font-size: 3rem;
+}
 #hero .t1{
   color: var(--acc);
   margin-bottom: 30px;
@@ -38,18 +44,25 @@
   color: var(--acc);
   font-size: 1.7rem;
 }
+#hero .icon{
+  color: var(--sc);
+  border: 1px solid var(--pc);
+}
+
 
 .txt{
   color: var(--pc);
 }
 .btn1{
-  color: var(--acc);
+  color: var(--sc);
   border: 1px solid var(--acc);
 }
 .btn1:hover{
   color: var(--sc);
   background: var(--acc);
-  transform: scale(1.1);
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+
 }
 
 .abt{

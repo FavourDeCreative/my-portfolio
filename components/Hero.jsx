@@ -1,66 +1,66 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
-import Link from "next/link"
-import {
-  Smile,
-  Users,
-  Rocket,
-  BadgeCheck,
-  Play,
-  ArrowUpRight,
-} from "lucide-react";
+import Image from "next/image"
+import logoImg from "@/public/logo1.png";
 
-// ─── Stats Data ──────────────────────────────────────────────────────────────
+import { ArrowUpRight, Smile, Users, Rocket, BadgeCheck, Globe, PenBox } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 const STATS = [
-  { value: "50+", label: "Projects Completed", icon: Smile },
-  { value: "30+", label: "Happy Clients", icon: Users },
-  { value: "3+", label: "Years Experience", icon: Rocket },
-  { value: "100%", label: "Client Satisfaction", icon: BadgeCheck },
+  {
+    value: "50+",
+    label: "Projects",
+    icon: Smile,
+  },
+  {
+    value: "30+",
+    label: "Clients",
+    icon: Users,
+  },
+  {
+    value: "3+",
+    label: "Years",
+    icon: Rocket,
+  },
+  {
+    value: "100%",
+    label: "Satisfaction",
+    icon: BadgeCheck,
+  },
 ];
 
 export default function Hero() {
   const sectionRef = useRef(null);
-  const badgeRef = useRef(null);
-  const headingRef = useRef(null);
-  const subRef = useRef(null);
-  const btnsRef = useRef(null);
-  const statsRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      gsap.from(".hero-left", {
+        opacity: 0,
+        x: -60,
+        duration: 1,
+        ease: "power3.out",
+      });
 
-      tl.fromTo(
-        badgeRef.current,
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.7 },
-      )
-        .fromTo(
-          headingRef.current,
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.9 },
-          "-=0.4",
-        )
-        .fromTo(
-          subRef.current,
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          "-=0.5",
-        )
-        .fromTo(
-          btnsRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.4",
-        )
-        .fromTo(
-          statsRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.7 },
-          "-=0.4",
-        );
+      gsap.from(".hero-right", {
+        opacity: 0,
+        x: 60,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".stat-card", {
+        opacity: 0,
+        y: 40,
+        stagger: 0.1,
+        duration: 0.8,
+        delay: 0.4,
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -69,64 +69,115 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-8 overflow-hidden font-sans select-none"
       id="hero"
+      className="relative min-h-screen flex items-center px-6 pt-24"
     >
-      {/* BACKGROUND */}
-      <div className="absolute top-[-20%] right-[-10%] w-[75%] h-[120%] pointer-events-none z-0" />
+      <div className="max-w-7xl mx-auto w-full">
+        {/* HERO */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT CONTENT */}
+          <div className="hero-left">
+            <div className="mb-4">
+              <p className="uppercase tracking-[0.3em] text-xs font-semibold txt">
+                Welcome To FavourDeCreative
+              </p>
+            </div>
 
-      {/* HERO CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-12 flex flex-col justify-center">
-          {/* Badge */}
-          <div
-            ref={badgeRef}
-            className="opacity-0 flex items-center gap-3 mb-4"
-          >
-            <span className="w-8 h-[2px]" />
-            <span className="text-[10px] font-bold tracking-[0.25em] uppercase t1">
-              Welcome to FavourDeCreative
-            </span>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              We Build Modern
+              <br />
+              <span className="one">Web Experiences</span>
+              <br />
+              That Drive Results.
+            </h1>
+
+            <p className="mt-6 text-base md:text-lg max-w-xl leading-relaxed">
+              We help brands and businesses grow online with high-performing
+              websites and digital solutions that deliver measurable results.
+            </p>
+
+            <div className="mt-8 flex items-center gap-4">
+              <Link
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border btn1"
+              >
+                View Our Work
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </Link>
+            </div>
           </div>
 
-          {/* Heading (smaller) */}
-          <h1
-            ref={headingRef}
-            className="opacity-0 font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.1] t2"
-          >
-            We Build Modern
-            <span className="t3"> Web</span> Experiences
-            That Drive <span className="t3">Results.</span>
-          </h1>
+          {/* RIGHT VISUAL */}
+          <div className="hero-right relative flex justify-center">
+            {/* MAIN LOGO / IMAGE AREA */}
+            <div className="relative w-full max-w-md aspect-square border rounded-[32px] flex items-center justify-center">
+              {/* REPLACE THIS WITH YOUR LOGO IMAGE */}
 
-          {/* Subtitle (reduced spacing) */}
-          <p
-            ref={subRef}
-            className="opacity-0 mt-4 text-sm sm:text-base max-w-xl leading-relaxed"
-          >
-            We help brands and businesses grow online with high-performing
-            websites and digital solutions that deliver real impact.
-          </p>
+              <div className="text-center">
+                <Image
+                  src={logoImg}
+                  alt="FavourDeCreative Logo"
+                  placeholder="blur"
+                  className=""
+                  priority
+                />
+              </div>
 
-          {/* BUTTONS (smaller padding) */}
-          {/* BUTTONS (smaller padding) */}
-          <div
-            ref={btnsRef}
-            className="opacity-0 flex flex-wrap items-center justify-center gap-4 mt-6"
-          >
-            <Link
-              href="#projects"
-              className="group flex items-center gap-2 text-xs font-semibold px-6 py-3 rounded-full transition-all duration-300 btn1"
-            >
-              View Our Work
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </Link>
+              {/* Floating Card 1 */}
+              <div className="absolute top-8 -left-6 border rounded-2xl px-5 py-3 icon">
+                <PenBox />
+                UI / UX Design
+              </div>
 
-            {/* Play Showreel removed (unchanged as you commented it out) */}
+              {/* Floating Card 2 */}
+              <div className="absolute bottom-16 -left-10 border rounded-2xl px-5 py-3 icon">
+                <Globe />
+                Web Development
+              </div>
+
+              {/* Floating Card 3 */}
+              <div className="absolute top-1/2 -right-8  rounded-2xl px-5 py-3 icon">
+                <Rocket />
+                SEO
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* STATS */}
+        <div className="mt-16">
+          <div className="flex gap-4 justify-between">
+            {STATS.map((stat, index) => {
+              const Icon = stat.icon;
+
+              return (
+                <div
+                  key={index}
+                  className="
+                    stat-card
+                    flex-1
+                    border
+                    rounded-2xl
+                    p-4
+                    text-center
+                  "
+                >
+                  <Icon size={20} className="mx-auto mb-3" />
+
+                  <h3 className="text-xl md:text-3xl font-bold">
+                    {stat.value}
+                  </h3>
+
+                  <p className="text-sm mt-1">{stat.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-
     </section>
   );
 }
