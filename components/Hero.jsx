@@ -47,75 +47,103 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const logoRef = useRef(null);
   const shadowRef = useRef(null);
+const card1Ref = useRef(null);
+const card2Ref = useRef(null);
+const card3Ref = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-left", {
-        opacity: 0,
-        x: -60,
-        duration: 1,
-        ease: "power3.out",
-      });
+  const ctx = gsap.context(() => {
+    gsap.from(".hero-left", {
+      opacity: 0,
+      x: -60,
+      duration: 1,
+      ease: "power3.out",
+    });
 
-      gsap.from(".hero-right", {
-        opacity: 0,
-        x: 60,
-        duration: 1,
-        ease: "power3.out",
-      });
+    gsap.from(".hero-right", {
+      opacity: 0,
+      x: 60,
+      duration: 1,
+      ease: "power3.out",
+    });
 
-      gsap.from(".stat-card", {
-        opacity: 0,
-        y: 40,
-        stagger: 0.1,
-        duration: 0.8,
-        delay: 0.4,
-      });
+    gsap.from(".stat-card", {
+      opacity: 0,
+      y: 40,
+      stagger: 0.1,
+      duration: 0.8,
+      delay: 0.4,
+    });
 
-      // Floating Logo
-      gsap.to(logoRef.current, {
-        y: -25,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+    // Logo floating
+    gsap.to(logoRef.current, {
+      y: -25,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      // Gentle tilt
-      gsap.to(logoRef.current, {
-        rotate: 5,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+    // Logo tilt
+    gsap.to(logoRef.current, {
+      rotate: 5,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      // Shadow breathing
-      gsap.to(shadowRef.current, {
-        scale: 0.75,
-        opacity: 0.25,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+    // Shadow breathing
+    gsap.to(shadowRef.current, {
+      scale: 0.75,
+      opacity: 0.25,
+      duration: 2.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
 
-      // Scroll-based 3D rotation
-      gsap.to(logoRef.current, {
-        rotationY: 45,
-        rotationX: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
-    }, sectionRef);
+    // Scroll rotation
+    gsap.to(logoRef.current, {
+      rotationY: 45,
+      rotationX: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
 
-    return () => ctx.revert();
-  }, []);
+    // Floating cards
+    gsap.to(card1Ref.current, {
+      y: -15,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(card2Ref.current, {
+      y: -20,
+      duration: 2.8,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(card3Ref.current, {
+      y: -12,
+      duration: 2.2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  }, sectionRef);
+
+  return () => ctx.revert();
+}, []);
 
   return (
     <section
@@ -165,46 +193,143 @@ export default function Hero() {
 
           {/* RIGHT VISUAL */}
           <div
-            className="hero-right relative flex justify-center"
-            style={{
-              perspective: "1200px",
-            }}
-          >
-            <div className="relative w-full max-w-md aspect-square border rounded-[32px] flex items-center justify-center">
-              
-              {/* SHADOW */}
-              <div
-                ref={shadowRef}
-                className="
-                  absolute
-                  bottom-10
-                  w-48
-                  h-10
-                  rounded-full
-                  bg-black/20
-                  blur-2xl
-                  z-0
-                "
-              />
+  className="hero-right relative flex justify-center items-center"
+  style={{ perspective: "1200px" }}
+>
+  <div
+    className="
+      relative
+      w-full
+      max-w-[260px]
+      sm:max-w-[320px]
+      md:max-w-[420px]
+      lg:max-w-[520px]
+      xl:max-w-[600px]
+      aspect-square
+      border
+      rounded-[32px]
+      flex
+      items-center
+      justify-center
+      transition-all
+      duration-500
+    "
+  >
+    {/* Shadow */}
+    <div
+      ref={shadowRef}
+      className="
+        absolute
+        bottom-8
+        md:bottom-10
+        w-32
+        md:w-48
+        h-6
+        md:h-10
+        rounded-full
+        bg-black/20
+        blur-2xl
+        z-0
+      "
+    />
 
-              {/* LOGO */}
-              <div
-                ref={logoRef}
-                className="
-                  relative
-                  z-10
-                  will-change-transform
-                  [transform-style:preserve-3d]
-                "
-              >
-                <Image
-                  src={logoImg}
-                  alt="FavourDeCreative Logo"
-                  placeholder="blur"
-                  priority
-                  className="select-none"
-                />
-              </div>
+    {/* Logo */}
+    <div
+      ref={logoRef}
+      className="
+        relative
+        z-10
+        will-change-transform
+        [transform-style:preserve-3d]
+      "
+    >
+      <Image
+        src={logoImg}
+        alt="FavourDeCreative Logo"
+        placeholder="blur"
+        priority
+        className="
+          select-none
+          w-[180px]
+          sm:w-[220px]
+          md:w-[300px]
+          lg:w-[380px]
+          xl:w-[450px]
+          h-auto
+        "
+      />
+    </div>
+
+    {/* UI/UX */}
+    <div
+      ref={card1Ref}
+      className="
+        absolute
+        top-4 md:top-8
+        -left-2 md:-left-6
+        px-3 py-2
+        md:px-5 md:py-3
+        border
+        rounded-2xl
+        icon
+        flex
+        items-center
+        gap-2
+        text-xs
+        md:text-sm
+      "
+    >
+      <PenBox size={16} />
+      <span>UI / UX Design</span>
+    </div>
+
+    {/* Web Development */}
+    <div
+      ref={card2Ref}
+      className="
+        absolute
+        bottom-8 md:bottom-16
+        -left-3 md:-left-10
+        px-3 py-2
+        md:px-5 md:py-3
+        border
+        rounded-2xl
+        icon
+        flex
+        items-center
+        gap-2
+        text-xs
+        md:text-sm
+      "
+    >
+      <Globe size={16} />
+      <span>Web Development</span>
+    </div>
+
+    {/* SEO */}
+    <div
+      ref={card3Ref}
+      className="
+        absolute
+        top-1/2
+        -right-2 md:-right-8
+        px-3 py-2
+        md:px-5 md:py-3
+        border
+        rounded-2xl
+        icon
+        flex
+        items-center
+        gap-2
+        text-xs
+        md:text-sm
+      "
+    >
+      <Rocket size={16} />
+      <span>SEO</span>
+    </div>
+  </div>
+</div>
 
               {/* Floating Card 1 */}
               <div className="absolute top-8 -left-6 border rounded-2xl px-5 py-3 icon flex items-center gap-2">
