@@ -132,7 +132,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center px-6 pt-24"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg.,:grid-cols-2 gap-16 items-center">
           
           {/* LEFT */}
           <div className="hero-left">
@@ -233,11 +233,11 @@ export default function Hero() {
                     border
                     rounded-2xl
                     p-4
-                    text-center
+                    text-center txt card
                   "
                 >
                   <Icon size={20} className="mx-auto mb-3" />
-                  <h3 className="text-xl md:text-3xl font-bold">{stat.value}</h3>
+                  <h3 className="text-xl md:text-3xl tt font-bold">{stat.value}</h3>
                   <p className="text-sm mt-1">{stat.label}</p>
                 </div>
               );

@@ -86,13 +86,13 @@ export default function Services() {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="service-heading max-w-3xl mb-20">
-          <p className="uppercase tracking-[0.35em] text-sm mb-5">
+          <p className="uppercase tracking-[0.35em] text-sm mb-5 txt">
             Our Services
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
             Digital solutions crafted for modern brands.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed max-w-2xl">
+          <p className="mt-6 text-lg leading-relaxed max-w-2xl tt">
             We help businesses grow through web development, UI/UX design,
             graphics design, video editing, blogging, and SEO optimization.
           </p>
@@ -107,7 +107,7 @@ export default function Services() {
               <div
                 key={index}
                 className="
-                  service-card
+                  service-card 
                   group relative
                   border border-white
                   rounded-[32px]
@@ -123,7 +123,7 @@ export default function Services() {
                   w-14 h-14 md:w-16 md:h-16
                   border card
                   rounded-2xl
-                  flex items-center justify-center
+                  flex items-center tt justify-center
                   mb-6
                   group-hover:scale-110
                   transition-transform duration-500

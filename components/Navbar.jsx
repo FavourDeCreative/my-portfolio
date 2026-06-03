@@ -42,7 +42,7 @@ export default function Navbar() {
         </Link>
 
         {/* 2. NAVLINKS (MIDDLE) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium tt">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium txt">
           {links.map((link) => (
             <a
               key={link.name}
