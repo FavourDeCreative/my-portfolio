@@ -155,7 +155,7 @@ export default function Hero() {
 
             <div className="mt-8 flex items-center gap-4">
               <Link
-                href="#projects"
+                href="#work"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border btn2"
               >
                 View Our Work

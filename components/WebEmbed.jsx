@@ -18,17 +18,17 @@ const sites = [
   },
 ];
 
-export default function WebsiteEmbed() {
+export default function Work() {
   return (
     <section className="py-32 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto" id="work">
         {/* Header */}
         <div className="mb-12">
           <p className="txt uppercase tracking-[0.3em] mb-4">
             Live Preview
           </p>
 
-          <h2 className="text-5xl font-bold">Embedded Website Showcase</h2>
+          <h2 className="text-5xl font-bold">View Our Work</h2>
         </div>
 
         {/* GRID */}

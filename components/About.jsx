@@ -55,7 +55,7 @@ export default function About() {
         {/* BUTTON */}
         <div className="mt-10">
           <a
-            href="#services"
+            href="#work"
             className="inline-flex items-center gap-3 px-7 py-4 rounded-full btn1 font-semibold hover:scale-105 transition duration-300"
           >
             View Our Work
