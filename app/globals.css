@@ -1,108 +1,200 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 
+
 :root {
- --pc: #0d0081;
- --sc: #F3F4F4;
- --acc: #2e77ae;
- --sc2:#ff8e28;
+
+ --pc: #0d0081;
+
+ --sc: #F3F4F4;
+
+ --acc: #2e77ae;
+
+ --sc2:#ff8e28;
+
 
 }
+
 .fst{
-  color: var(--sc2);
+
+  color: var(--sc2);
+
 }
+
 .logo-text{
-  color: var(--pc);
+
+  color: var(--pc);
+
 }
+
 
 /* HERO BACKGROUND */
+
 #hero{
-  background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url(../public/hero.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+
+  background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url(../public/hero.png);
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
 }
+
 
 /*hero designs*/
+
 #hero h1{
-  font-size: 1.7rem;
+
+  font-size: 1.7rem;
+
 }
+
 #hero h1 .one{
+
 color: var(--sc2);
+
 font-size: 3rem;
+
 }
+
 #hero .t1{
-  color: var(--acc);
-  margin-bottom: 30px;
+
+  color: var(--acc);
+
+  margin-bottom: 30px;
+
 
 
 }
+
 #hero .t2{
-  color: var(--sc);
-  font-size: 1.3rem;
-  margin-bottom: 30px;
+
+  color: var(--sc);
+
+  font-size: 1.3rem;
+
+  margin-bottom: 30px;
+
 }
+
 #hero .t3{
-  color: var(--acc);
-  font-size: 1.7rem;
+
+  color: var(--acc);
+
+  font-size: 1.7rem;
+
 }
+
 #hero .icon{
-  color: var(--sc2);
-  border: 1px solid var(--pc);
+
+  color: var(--sc2);
+
+  border: 1px solid var(--pc);
+
 }
+
 
 
 .txt{
-  color: var(--pc);
-}
-.tt{
-  color: var(--sc2);
-}
-.btn1{
-  color: var(--sc);
-  border: 1px solid var(--acc);
-}
-.btn1:hover{
-  color: var(--sc);
-  background: var(--acc);
-  transform: scale(1.05);
-  transition: 0.3s ease-in-out;
+
+  color: var(--pc);
 
 }
-.btn2{
-  color: var(--sc1);
-  background: var(--pc);
+
+.tt{
+
+  color: var(--sc2);
+
 }
+
+.btn1{
+
+  color: var(--sc);
+
+  border: 1px solid var(--acc);
+
+}
+
+.btn1:hover{
+
+  color: var(--sc);
+
+  background: var(--acc);
+
+  transform: scale(1.05);
+
+  transition: 0.3s ease-in-out;
+
+
+}
+
+.btn2{
+
+  color: var(--sc1);
+
+  background: var(--pc);
+
+}
+
 
 .btn2:hover{
-  background: var(--acc);
-  transform: scale(1.01);
-  transition: 0.3s ease-in-out;
+
+  background: var(--acc);
+
+  transform: scale(1.01);
+
+  transition: 0.3s ease-in-out;
+
 }
+
 
 
 
 .abt{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
 }
+
 
 .service-card{
-  border-color: var(--sc2);
-}
-.card{
-  border-color: var(--acc);
+
+  border-color: var(--sc2);
+
 }
 
+.card{
+
+  border-color: var(--acc);
+
+}
+
+
 .soc{
-  color: var(--sc);
-  border-color: var(--acc);
-  transition: 0.3s ease-in-out;
+
+  color: var(--sc);
+
+  border-color: var(--acc);
+
+  transition: 0.3s ease-in-out;
+
 }
+
 .soc:hover{
-  color: var(--acc);
-  border-color: var(--pc);
-  background: var(--sc);
+
+  color: var(--acc);
+
+  border-color: var(--pc);
+
+  background: var(--sc);
+
 }
+
