@@ -4,10 +4,10 @@
 
 
 :root {
- --pc: #0266F4;
+ --pc: #0d0081;
  --sc: #F3F4F4;
- --acc: #0082F4;
- --sc2:#cdc70d;
+ --acc: #2e77ae;
+ --sc2:#ff8e28;
 
 }
 .fst{
@@ -29,7 +29,7 @@
   font-size: 1.7rem;
 }
 #hero h1 .one{
-color: var(--pc);
+color: var(--sc2);
 font-size: 3rem;
 }
 #hero .t1{
@@ -71,7 +71,7 @@ font-size: 3rem;
 
 }
 .btn2{
-  color: var(--sc2);
+  color: var(--sc1);
   background: var(--pc);
 }
 
