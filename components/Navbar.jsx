@@ -62,7 +62,7 @@ export default function Navbar() {
             href="#contact"
             className="flex items-center gap-2 border btn2 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-all duration-300  group"
           >
-            Let's Talk
+            Visit Our Academy
             <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
@@ -94,7 +94,7 @@ export default function Navbar() {
             onClick={() => setOpen(false)}
             className="flex items-center justify-center gap-2 border rounded-full py-3 mt-4 text-base font-medium btn2"
           >
-            Let's Talk
+            Visit Our Academy
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>

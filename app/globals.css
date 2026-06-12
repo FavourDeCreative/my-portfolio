@@ -71,7 +71,7 @@ font-size: 3rem;
 
 }
 .btn2{
-  color: var(--sc);
+  color: var(--sc1);
   background: var(--pc);
 }
 
@@ -96,13 +96,27 @@ font-size: 3rem;
   border-color: var(--acc);
 }
 
+input{
+  border: 1px solid var(--acc);
+}
+ 
+input:focus{
+  border: 1px solid var(--sc2);
+}
+.inp{
+  border: 1px solid var(--acc);
+}
+.inp:focus{
+  border: 1px solid var(--sc2);
+}
 .soc{
   color: var(--sc);
   border-color: var(--acc);
   transition: 0.3s ease-in-out;
 }
 .soc:hover{
-  color: var(--acc);
-  border-color: var(--pc);
+  color: var(--sc2);
+  border-color: var(--sc2);
   background: var(--sc);
+  transform: scale(1.05);
 }

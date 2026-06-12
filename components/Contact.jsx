@@ -2,6 +2,7 @@ import {
   FaEnvelope,
   FaGithub,
   FaLinkedin,
+  FaTelegram,
   FaFacebook,
   FaInstagram,
   FaTiktok,
@@ -33,21 +34,21 @@ export default function Contact() {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full px-5 py-4 rounded-xl bg-transparent border border-white/10 focus:border-cyan-400 outline-none transition"
+              className="w-full px-5 py-4 rounded-xl bg-transparent border outline-none transition"
             />
 
             {/* Email */}
             <input
               type="email"
               placeholder="Your Email"
-              className="w-full px-5 py-4 rounded-xl bg-transparent border border-white/10 focus:border-cyan-400 outline-none transition"
+              className="w-full px-5 py-4 rounded-xl bg-transparent border  outline-none transition"
             />
 
             {/* Message */}
             <textarea
               rows="5"
               placeholder="Your Message..."
-              className="w-full px-5 py-4 rounded-xl bg-transparent border border-white/10 focus:border-cyan-400 outline-none transition resize-none"
+              className="w-full px-5 py-4 rounded-xl bg-transparent border outline-none transition resize-none inp"
             ></textarea>
 
             {/* Submit */}
@@ -100,6 +101,13 @@ export default function Contact() {
                 className="p-3 rounded-full border soc transition"
               >
                 <FaEnvelope size={18} />
+              </a>
+
+              <a
+                href="mailto:yourmail@example.com"
+                className="p-3 rounded-full border soc transition"
+              >
+                <FaTelegram size={18} />
               </a>
             </div>
           </div>
