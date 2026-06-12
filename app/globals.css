@@ -52,6 +52,16 @@ font-size: 3rem;
   border: 1px solid var(--pc);
 }
 
+.top{
+  color: var(--sc2);
+}
+.top:hover{
+  color: var(--sc);
+  transform: scale(1.08);
+}
+.line{
+  background: var(--sc);
+}
 
 .txt{
   color: var(--pc);

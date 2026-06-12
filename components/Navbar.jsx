@@ -14,6 +14,7 @@ const links = [
   { name: "Process", href: "#process" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
+  { name: "Academy", href: "#academy" },
 ];
 
 export default function Navbar() {
@@ -47,11 +48,11 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="relative transition hover:text-white py-1 group"
+              className="relative transition top py-1 group"
             >
               {link.name}
               {/* Subtle blue active/hover indicator dot underneath */}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-1  rounded-full opacity-0 group-hover:opacity-100 line transition-opacity" />
             </a>
           ))}
         </nav>
