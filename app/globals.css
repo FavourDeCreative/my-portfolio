@@ -4,9 +4,9 @@
 
 
 :root {
- --pc: #0d0081;
+ --pc: #2e77ae;
  --sc: #F3F4F4;
- --acc: #2e77ae;
+ --acc: #0d0081;
  --sc2:#ff8e28;
 
 }
@@ -16,6 +16,7 @@
 .logo-text{
   color: var(--pc);
 }
+
 
 /* HERO BACKGROUND */
 #hero{
