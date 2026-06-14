@@ -17,7 +17,9 @@
   color: var(--pc);
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 /* HERO BACKGROUND */
 #hero{
   background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url(../public/hero.png);

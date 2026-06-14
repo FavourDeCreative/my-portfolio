@@ -35,7 +35,7 @@ export default function Blog() {
         </p>
       </div>
 
-      <section className="blog-list">
+      <section className="blog-list" id="blog">
         {posts.map((post) => (
           <article key={post.title} className="blog-card">
             <time dateTime={post.date} className="blog-date">

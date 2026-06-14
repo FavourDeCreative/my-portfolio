@@ -16,7 +16,7 @@ const projects = [
   },
 ];
 
-export default function Portfolio() {
+export default function Projects() {
   return (
     <section id="projects" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">

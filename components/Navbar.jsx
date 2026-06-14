@@ -7,11 +7,10 @@ import { useState } from "react";
 import logoImg from "@/public/logo1.png"; // Adjust the path (e.g., "../../public/logo.png") depending on your folder depth
 
 const links = [
-  { name: "Home", href: "#home" },
+  { name: "Home", href: "/" },
   { name: "About", href: "#about" },
   { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Process", href: "#process" },
+  { name: "Projects", href: "#work" },
   { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
   { name: "Academy", href: "#academy" },
