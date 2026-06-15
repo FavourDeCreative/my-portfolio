@@ -1,5 +1,12 @@
 "use client";
 
+
+import Image from "next/image";
+import Link from "next/link";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
+import Navbar from "@/components/Navbar";
 const posts = [
   {
     title: "Building a modern portfolio",
@@ -25,6 +32,18 @@ const posts = [
 ];
 
 export default function Blog() {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    gsap.from(cardsRef.current, {
+      opacity: 0,
+      y: 24,
+      duration: 0.8,
+      stagger: 0.12,
+      ease: "power3.out",
+    });
+  }, []);
+
   return (
     <main className="blog-page">
       <div className="blog-header">
@@ -36,16 +55,21 @@ export default function Blog() {
       </div>
 
       <section className="blog-list" id="blog">
-        {posts.map((post) => (
-          <article key={post.title} className="blog-card">
+        <Navbar />
+        {posts.map((post, index) => (
+          <article
+            key={post.title}
+            ref={(el) => (cardsRef.current[index] = el)}
+            className="blog-card"
+          >
             <time dateTime={post.date} className="blog-date">
               {post.date}
             </time>
             <h2>{post.title}</h2>
             <p>{post.excerpt}</p>
-            <a href={post.link} className="blog-link">
-              Read article
-            </a>
+            <Link href={post.link} className="blog-link">
+              Read article <ArrowUpRight className="inline-block w-4 h-4 ml-2" />
+            </Link>
           </article>
         ))}
       </section>
