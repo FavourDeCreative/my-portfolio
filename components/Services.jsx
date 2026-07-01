@@ -82,24 +82,24 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="py-28 md:py-36 px-6">
+    <section id="services" ref={sectionRef} className="px-4 py-24 sm:px-6 md:py-32">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <div className="service-heading max-w-3xl mb-20">
+        <div className="service-heading mx-auto mb-16 max-w-3xl text-center md:mb-20">
           <p className="uppercase tracking-[0.35em] text-sm mb-5 txt">
             Our Services
           </p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
             Digital solutions crafted for modern brands.
           </h2>
-          <p className="mt-6 text-lg leading-relaxed max-w-2xl tt">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed tt">
             We help businesses grow through web development, UI/UX design,
             graphics design, video editing, blogging, and SEO optimization.
           </p>
         </div>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
             const Icon = service.icon;
 
@@ -112,7 +112,7 @@ export default function Services() {
                   border border-white
                   rounded-[32px]
                   p-6 md:p-8
-                  min-h-[320px]
+                  min-h-[280px]
                   cursor-pointer
                   transition-transform duration-500
                   hover:-translate-y-2

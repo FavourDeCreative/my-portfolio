@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@/public/logo1.png"; // Adjust the path (e.g., "../../public/logo.png") depending on your folder depth
+import logoImg from "@/public/logo1.png";
 
 const links = [
   { name: "Home", href: "/" },
@@ -13,7 +13,6 @@ const links = [
   { name: "Projects", href: "#work" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "#contact" },
-  { name: "Academy", href: "#academy" },
 ];
 
 export default function Navbar() {
@@ -21,55 +20,58 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 z-50 w-full backdrop-blur-xl border-b border-white/10 bg-[#071925]/70">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
         {/* 1. LOGO (LEFT) */}
         <Link
           href="/"
-          className="flex items-center gap-3 text-xl font-bold tracking-wider text-white"
+          className="flex min-w-0 shrink-0 items-center gap-3 text-lg font-bold tracking-wide text-white sm:text-xl"
         >
-          <div className="relative w-8 h-8 flex items-center justify-center">
+          <div className="relative flex h-9 w-9 shrink-0 items-center justify-center">
             <Image
               src={logoImg}
               alt="FavourDeCreative Logo"
               placeholder="blur"
-              className=""
               priority
             />
           </div>
-          <span className="fst">
+          <span className="fst truncate">
             Favour<span className="logo-text">DeCreative</span>
           </span>
         </Link>
 
         {/* 2. NAVLINKS (MIDDLE) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium txt">
+        <nav className="hidden flex-1 items-center justify-center gap-2 text-sm font-medium txt lg:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
-              className="relative transition top py-1 group"
+              className="group relative rounded-full px-3 py-2 transition hover:text-white xl:px-4"
             >
               {link.name}
               {/* Subtle blue active/hover indicator dot underneath */}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-1  rounded-full opacity-0 group-hover:opacity-100 line transition-opacity" />
-            </a>
+              <span className="absolute bottom-1 left-1/2 h-1 w-3 -translate-x-1/2 rounded-full opacity-0 line transition-opacity group-hover:opacity-100" />
+            </Link>
           ))}
         </nav>
 
         {/* 3. LET'S TALK BUTTON (RIGHT) */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden shrink-0 items-center lg:flex">
           <Link
             href="#contact"
-            className="flex items-center gap-2 border btn2 rounded-full px-6 py-2.5 text-sm font-medium text-white transition-all duration-300  group"
+            className="group flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 btn2 xl:px-5"
           >
-            Visit Our Academy
+            <span className="hidden xl:inline">Visit Our Academy</span>
+            <span className="xl:hidden">Academy</span>
             <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="md:hidden text-white z-50"
+          type="button"
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
+          className="z-50 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white lg:hidden"
           onClick={() => setOpen(!open)}
         >
           {open ? <X /> : <Menu />}
@@ -78,21 +80,21 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden fixed inset-x-0 top-[73px] bg-[#071925]/95 backdrop-blur-2xl border-b border-white/10 p-6 flex flex-col gap-5 shadow-xl">
+        <div className="fixed inset-x-0 top-20 flex flex-col gap-2 border-b border-white/10 bg-[#071925]/95 p-4 shadow-xl backdrop-blur-2xl lg:hidden">
           {links.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-lg font-medium tt hover:text-white transition-colors"
+              className="rounded-2xl px-4 py-3 text-base font-medium tt transition-colors hover:bg-white/5 hover:text-white"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <Link
             href="#contact"
             onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-2 border rounded-full py-3 mt-4 text-base font-medium btn2"
+            className="mt-3 flex items-center justify-center gap-2 rounded-full border py-3 text-base font-medium btn2"
           >
             Visit Our Academy
             <ArrowUpRight className="w-4 h-4" />

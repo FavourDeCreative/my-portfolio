@@ -12,40 +12,42 @@ const sites = [
     link: "https://cdorf.vercel.app",
   },
   {
-    title: "Fintech Dashboard",
-    image: "/sites/site3.png",
-    link: "https://example.com",
+    title: "More Projects Coming Soon",
+    image: "/hero.png",
+    link: "#contact",
   },
 ];
 
 export default function Work() {
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-7xl mx-auto" id="work">
+    <section className="px-4 py-24 sm:px-6 md:py-32" id="work">
+      <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-12">
-          <p className="txt uppercase tracking-[0.3em] mb-4">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <p className="txt mb-4 uppercase tracking-[0.3em]">
             Live Preview
           </p>
 
-          <h2 className="text-5xl font-bold">View Our Work</h2>
+          <h2 className="text-4xl font-bold sm:text-5xl">View Our Work</h2>
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {sites.map((site, i) => (
             <a
               key={i}
               href={site.link}
-              target="_blank"
-              className="group rounded-2xl overflow-hidden border border-white/10 bg-black hover:border-cyan-400/40 transition"
+              target={site.link.startsWith("#") ? undefined : "_blank"}
+              rel={site.link.startsWith("#") ? undefined : "noreferrer"}
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-black transition hover:border-cyan-400/40"
             >
               {/* Screenshot */}
-              <div className="relative h-[220px] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={site.image}
                   alt={site.title}
                   fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover group-hover:scale-110 transition duration-700"
                 />
 
@@ -57,7 +59,9 @@ export default function Work() {
               <div className="p-5">
                 <h3 className="text-lg font-semibold">{site.title}</h3>
                 <p className="text-zinc-500 text-sm mt-2">
-                  Click to view live project →
+                  {site.link.startsWith("#")
+                    ? "Contact us to start yours"
+                    : "Click to view live project"}
                 </p>
               </div>
             </a>

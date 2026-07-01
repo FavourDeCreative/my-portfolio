@@ -10,7 +10,7 @@ import {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-32 px-6">
+    <section id="contact" className="px-4 py-24 sm:px-6 md:py-32">
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-16">

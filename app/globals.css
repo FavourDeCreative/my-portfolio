@@ -29,11 +29,11 @@ html{
 
 /*hero designs*/
 #hero h1{
-  font-size: 1.7rem;
+  font-size: inherit;
 }
 #hero h1 .one{
 color: var(--sc2);
-font-size: 3rem;
+font-size: inherit;
 }
 #hero .t1{
   color: var(--acc);

@@ -129,18 +129,17 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center px-6 pt-24"
+      className="relative flex min-h-screen items-center px-4 pb-16 pt-28 sm:px-6 lg:pt-32"
     >
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg.,:grid-cols-2 gap-16 items-center">
-          
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)] lg:gap-16">
           {/* LEFT */}
-          <div className="hero-left">
+          <div className="hero-left text-center lg:text-left">
             <p className="uppercase tracking-[0.3em] text-xs font-semibold txt">
               Welcome To FavourDeCreative
             </p>
 
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
               We Build Modern
               <br />
               <span className="one">Web Experiences</span>
@@ -148,12 +147,12 @@ export default function Hero() {
               That Drive Results.
             </h1>
 
-            <p className="mt-6 text-base md:text-lg max-w-xl leading-relaxed">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg lg:mx-0">
               We help brands and businesses grow online with
               high-performing websites and digital solutions.
             </p>
 
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-8 flex items-center justify-center gap-4 lg:justify-start">
               <Link
                 href="#work"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border btn2"
@@ -169,8 +168,7 @@ export default function Hero() {
             className="hero-right relative flex justify-center items-center"
             style={{ perspective: "1200px" }}
           >
-            <div className="relative w-full max-w-[600px] aspect-square border rounded-[32px] flex items-center justify-center">
-
+            <div className="relative flex aspect-square w-full max-w-[520px] items-center justify-center rounded-[28px] border border-white/10">
               {/* Shadow */}
               <div
                 ref={shadowRef}
@@ -193,7 +191,7 @@ export default function Hero() {
               {/* Cards */}
               <div
                 ref={card1Ref}
-                className="absolute top-4 -left-2 px-3 py-2 border rounded-2xl icon flex items-center gap-2 text-xs"
+                className="absolute left-3 top-4 flex items-center gap-2 rounded-2xl border bg-black/50 px-3 py-2 text-xs icon backdrop-blur sm:left-0"
               >
                 <PenBox size={16} />
                 <span>UI / UX Design</span>
@@ -201,7 +199,7 @@ export default function Hero() {
 
               <div
                 ref={card2Ref}
-                className="absolute bottom-8 -left-3 px-3 py-2 border rounded-2xl icon flex items-center gap-2 text-xs"
+                className="absolute bottom-8 left-3 flex items-center gap-2 rounded-2xl border bg-black/50 px-3 py-2 text-xs icon backdrop-blur sm:left-0"
               >
                 <Globe size={16} />
                 <span>Web Development</span>
@@ -209,7 +207,7 @@ export default function Hero() {
 
               <div
                 ref={card3Ref}
-                className="absolute top-1/2 -right-2 px-3 py-2 border rounded-2xl icon flex items-center gap-2 text-xs"
+                className="absolute right-3 top-1/2 flex items-center gap-2 rounded-2xl border bg-black/50 px-3 py-2 text-xs icon backdrop-blur sm:right-0"
               >
                 <Rocket size={16} />
                 <span>SEO</span>
@@ -220,7 +218,7 @@ export default function Hero() {
 
         {/* STATS */}
         <div className="mt-16">
-          <div className="flex gap-4 justify-between">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {STATS.map((stat, index) => {
               const Icon = stat.icon;
 
@@ -229,7 +227,6 @@ export default function Hero() {
                   key={index}
                   className="
                     stat-card
-                    flex-1
                     border
                     rounded-2xl
                     p-4
