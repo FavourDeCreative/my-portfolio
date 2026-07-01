@@ -1,6 +1,17 @@
-import Image from "next/image";
+"use client";
 
-const sites = [
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { client, hasSanityConfig, urlFor } from "@/lib/sanity";
+
+const PROJECTS_QUERY = `*[_type == "project" && isFeatured != false] | order(orderRank asc, title asc) {
+  title,
+  link,
+  image,
+  "imageUrl": image.asset->url
+}`;
+
+const fallbackSites = [
   {
     title: "Gbenga Gomes Portfolio",
     image: "/sites/site1.jpg",
@@ -19,6 +30,21 @@ const sites = [
 ];
 
 export default function Work() {
+  const [sites, setSites] = useState(fallbackSites);
+
+  useEffect(() => {
+    if (!hasSanityConfig) return;
+
+    client
+      .fetch(PROJECTS_QUERY)
+      .then((data) => {
+        if (data?.length) setSites(data);
+      })
+      .catch(() => {
+        setSites(fallbackSites);
+      });
+  }, []);
+
   return (
     <section className="px-4 py-24 sm:px-6 md:py-32" id="work">
       <div className="mx-auto max-w-7xl">
@@ -35,7 +61,7 @@ export default function Work() {
         <div className="grid gap-8 md:grid-cols-3">
           {sites.map((site, i) => (
             <a
-              key={i}
+              key={`${site.title}-${i}`}
               href={site.link}
               target={site.link.startsWith("#") ? undefined : "_blank"}
               rel={site.link.startsWith("#") ? undefined : "noreferrer"}
@@ -44,7 +70,12 @@ export default function Work() {
               {/* Screenshot */}
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src={site.image}
+                  src={
+                    site.imageUrl ||
+                    (site.image?._type === "image"
+                      ? urlFor(site.image).width(900).height(560).url()
+                      : site.image)
+                  }
                   alt={site.title}
                   fill
                   sizes="(min-width: 768px) 33vw, 100vw"

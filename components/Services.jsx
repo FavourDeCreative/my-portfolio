@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { client, hasSanityConfig } from "@/lib/sanity";
 import {
   Globe,
   PenTool,
@@ -12,39 +13,54 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-const services = [
+const SERVICE_ICONS = {
+  web: Globe,
+  design: PenTool,
+  graphics: Palette,
+  video: Video,
+  blog: FileText,
+  seo: Search,
+};
+
+const SERVICES_QUERY = `*[_type == "service" && isActive != false] | order(orderRank asc, title asc) {
+  title,
+  description,
+  icon
+}`;
+
+const fallbackServices = [
   {
-    icon: Globe,
+    icon: "web",
     title: "Web Development",
     description:
       "Modern websites and web applications built for performance, scalability, and business growth.",
   },
   {
-    icon: PenTool,
+    icon: "design",
     title: "UI/UX Design",
     description:
       "User-focused interfaces designed to improve usability, engagement, and conversion.",
   },
   {
-    icon: Palette,
+    icon: "graphics",
     title: "Graphics Design",
     description:
       "Creative branding materials, social media assets, marketing graphics, and visual content.",
   },
   {
-    icon: Video,
+    icon: "video",
     title: "Video Editing",
     description:
       "Professional editing for promotional videos, reels, advertisements, and social media content.",
   },
   {
-    icon: FileText,
+    icon: "blog",
     title: "Blogging",
     description:
       "Content creation and blog management to educate audiences and strengthen online presence.",
   },
   {
-    icon: Search,
+    icon: "seo",
     title: "SEO Optimization",
     description:
       "Search engine optimization strategies that improve rankings and increase organic traffic.",
@@ -53,6 +69,20 @@ const services = [
 
 export default function Services() {
   const sectionRef = useRef(null);
+  const [services, setServices] = useState(fallbackServices);
+
+  useEffect(() => {
+    if (!hasSanityConfig) return;
+
+    client
+      .fetch(SERVICES_QUERY)
+      .then((data) => {
+        if (data?.length) setServices(data);
+      })
+      .catch(() => {
+        setServices(fallbackServices);
+      });
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -101,7 +131,7 @@ export default function Services() {
         {/* GRID */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
-            const Icon = service.icon;
+            const Icon = SERVICE_ICONS[service.icon] || Globe;
 
             return (
               <div
