@@ -1,6 +1,12 @@
 import "./globals.css";
 import Script from "next/script";
 
+export const metadata = {
+  verification: {
+    google: "JNmK08nn0KySu0LZk6DifIALT0n6xMU8vre-eHwXc0U",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
